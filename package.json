@@ -1,0 +1,17 @@
+{
+  "name": "proj-exercitium",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.81.1",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0"
+  }
+}
