@@ -1,35 +1,61 @@
 <!DOCTYPE html>
+<!-- HTML shell -->
 <html lang="en">
+    <!-- html opening tag with a language attribute of english -->
 <head>
+    <!-- head tag shows the browser and search engines everything it needs to allow to handle the page  -->
     <meta charset="UTF-8">
+    <!-- the character set attribute tells the browser to convert code into human readable characters like emojis -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- perhaps the most important meta tag and attribute allows the page to be adjusted to the viewport of the device-->
+    <title> Exercitium</title>
+    <!-- tag for displaying the title of the page in the tab of the browser -->
+
 </head>
+<!-- closing head tag -->
 <body>
-    <h1>
+    <!-- opening body tag -->
+    <h1 id="search">
+        <!-- Header 1 provides information on what the page is about -->
         Find Exercises
     </h1>
+    <nav>
+        <a href="generator.html" target="_blank" >Random Workout Generator</a>
+    </nav>
     <form action="" id="filterForm">
+        <!-- opening form tag with an id of filterform -->
         <!-- Skill Level -->
          <fieldset>
+            <!-- fieldset tag is used to group related elements in a form. 
+             visually it is represented by a thin border around the grouped elements -->
             <legend>
+            <!-- caption for the fieldset tag/ box -->
                 Level 
             </legend>
             <label for=""><input type="checkbox" name="level" value="Beginner">Beginner</label>
+            <!-- the label tag is used to caption the input tag, the type attribute determines how the input looks and behaves the name tag is used to label the data sent to the server and this determines how thwe data is groupes the value tag is the invible id for data that is sent to the server which in this caseis beginner -->
             <label for=""><input type="checkbox" name="level" value="Intermediate">Intermediate</label>
              <label for=""><input type="checkbox" name="level" value="Expert">Expert</label>
          </fieldset>
          <!-- Equipment -->
           <fieldset>
+             <!-- fieldset tag is used to group related elements in a form. 
+             visually it is represented by a thin border around the grouped elements -->
       <legend>Equipment</legend>
+      <!-- caption for the fieldset tag/ box -->
       <label><input type="checkbox" name="equipment" value="Body Only" /> Body Only</label>
+      <!-- the label tag is used to caption the input tag, the type attribute determines how the input looks and behaves the name tag is used to label the data sent to the server and this determines how thwe data is groupes the value tag is the invible id for data that is sent to the server which in this caseis beginner -->
       <label><input type="checkbox" name="equipment" value="Equipment Required" /> Equipment Required</label>
     </fieldset>
 
           <!-- Primary Muscle -->
            <fieldset>
+             <!-- fieldset tag is used to group related elements in a form. 
+             visually it is represented by a thin border around the grouped elements -->
       <legend>Primary Muscle</legend>
+      <!-- caption for the fieldset tag/ box -->
       <label><input type="checkbox" name="primaryMuscles" value="Abdominals" /> Abdominals</label>
+      <!-- the label tag is used to caption the input tag, the type attribute determines how the input looks and behaves the name tag is used to label the data sent to the server and this determines how thwe data is groupes the value tag is the invible id for data that is sent to the server which in this caseis beginner -->
       <label><input type="checkbox" name="primaryMuscles" value="Abductors" /> Abductors</label>
       <label><input type="checkbox" name="primaryMuscles" value="Biceps" /> Biceps</label>
       <label><input type="checkbox" name="primaryMuscles" value="Calves" /> Calves</label>
@@ -59,11 +85,17 @@
     </fieldset>
 
         <button type="submit">
+            <!-- button tag with a submit type which is used to submit data to server determines the behavour of a button  -->
             Search
         </button>
     </form>
+    <!-- closing form tag -->
     <h2>Results</h2>
+    <!-- Header 2 which are the Results of the search above 
+     -->
     <ul id="results"></ul>
+    <!-- unordered list with an identifier of results  -->
     <script src="app.js"></script>
+    <!-- the sript tag and the src attribute links the HTML page to the JS script in this case app.js  -->
 </body>
 </html>

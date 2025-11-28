@@ -13,6 +13,8 @@ const supabase = createClient(
 )
 // Static files
 app.use(express.static('public'))
+app.use(express.json())
+
 
 // Call to fetch data from DB
 app.get('/exercises', async(req, res) =>{
@@ -59,6 +61,61 @@ if(!wantsBodyOnly && wantsEquipReq){
     //  console.log(data)
     res.json(data)
 })
+
+
+app.get ('/exercises/random', async(req, res)=>{
+    const { workoutType = 'bodyweight', exerciseCount= 5 } =req.query
+    console.log('workoutType:', workoutType)
+console.log('count received:', exerciseCount)
+console.log('count type:', typeof exerciseCount)
+    let query = supabase
+    .from('exercises')
+    .select('*')
+
+        if(workoutType === 'bodyweight'){
+         query = query.eq('equipment', 'Body Only')
+        }else if(workoutType === 'equipment'){
+          query = query.neq('equipment', 'Body Only')
+        }
+
+        const { data, error }= await query
+        if(error){
+        console.error('Supabase error:', error)
+        return res.status(500).json({error: error.message})
+    }
+
+     if (!data || data.length === 0) {
+        return res.json([]) 
+    }
+    const arr = [...data]
+    for(let i = arr.length-1; i> 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+        [arr[i],arr[j]] = [arr[j], arr[i]]
+    }
+
+    const limit = Number(exerciseCount) || 5
+    const randomized = arr.slice(0, limit)   
+    
+    console.log(randomized)
+
+return res.json(randomized)
+
+})
+
+app.post('/workout_plan', async(req, res)=>{
+const { plan_name, exercises } = req.body
+const {data, error} = await supabase.from('workout_plan'). insert({
+     plan_name: plan_name,
+     exercises :exercises
+}).select()
+if(error){
+        console.error('Supabase error:', error)
+        return res.status(500).json({error: error.message})
+    }
+    res.json(data)
+
+ })
+
 app.get('/exercises/:id', async(req, res) =>{
 
     const { id } = req.params
@@ -66,15 +123,20 @@ app.get('/exercises/:id', async(req, res) =>{
     .from('exercises')
     .select('*')
     .eq('id', id)
-    .single()
+    .maybeSingle()
 
     if(error){
         console.error('Supabase error:', error)
         return res.status(500).json({error: error.message})
     }
+    if(!data){
+        return res.json(null)
+    }
     //  console.log(data)
     res.json(data)
 })
+
+
 
 
 

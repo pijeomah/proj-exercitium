@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Workout Generator</title>
+</head>
+<body>
+    <h1>Random Workout Generator</h1>
+    <nav><a href="index.html">Find Exercises</a></nav>
+    <form action="" id="generator-form">
+        <label for="equipment"><input type="radio" id="equipment" name="workoutType" value="equipment">Equipment</label>
+        <label for="bodyweight"><input type="radio" id="bodyweight" name="workoutType" value="bodyweight">Bodyweight</label>
+        <label for="exercise_num">Number of workouts:
+            <input type="number" name="exerciseCount" id="exercise_num" min="3" max="8" value="8">
+        </label>
+         <button type="submit">Generate Workout</button>
+    </form>
+    <div id="workout-result">
+        <ul id="randomList"></ul>
+        <button id="sv-workout-btn" type="button" >Save Workout as Plan</button>
+    </div>
+
+    <script src="generator.js"></script>
+</body>
+</html>
