@@ -64,7 +64,7 @@ if(!wantsBodyOnly && wantsEquipReq){
 
 
 app.get ('/exercises/random', async(req, res)=>{
-    const { workoutType = 'bodyweight', exerciseCount= 5 } =req.query
+    const { workoutType = 'bodyweight', exerciseCount= 5, primaryMuscles=null } =req.query
     console.log('workoutType:', workoutType)
 console.log('count received:', exerciseCount)
 console.log('count type:', typeof exerciseCount)
@@ -78,11 +78,29 @@ console.log('count type:', typeof exerciseCount)
           query = query.neq('equipment', 'Body Only')
         }
 
+        if(primaryMuscles){
+            const muscles = primaryMuscles
+            .split(',') 
+            .map(m => m.trim())
+            .filter(Boolean)
+                if(muscles.length > 0){
+    const orFilters = muscles
+                .map(m => `primaryMuscles.ilike.%${m}%`)
+                .join(',')
+
+                query = query.or(orFilters)
+
+                }
+           
+        }
+
+            
         const { data, error }= await query
         if(error){
         console.error('Supabase error:', error)
         return res.status(500).json({error: error.message})
     }
+
 
      if (!data || data.length === 0) {
         return res.json([]) 

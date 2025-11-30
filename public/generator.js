@@ -1,28 +1,30 @@
 let currentExercises= []
 const saveBtn = document.getElementById('sv-workout-btn')
 saveBtn.style.display = 'none'
-saveBtn.addEventListener('click', ()=> {
+saveBtn.addEventListener('click', async ()=> {
     const workoutName = prompt('Enter your workout name:')
     console.log(workoutName)
     console.log(currentExercises)
-})
-
-if(!workoutName){
+    if(!workoutName){
     return 'No workouts have been saved'
 }
 try {
-    const workoutSaved = await fetch('exercises/workout-plan', {
+    const workoutSaved = await fetch('/workout_plan', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json,charset=utf-8'},
-        body: JSON.stringify({plan_name: plan_name, exercises: exercises})
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({plan_name: workoutName, exercises: currentExercises})
     })
     let result = await workoutSaved.json()
     console.log(result)
+    alert(`${workoutName} has been saved successfully` )
 
 } catch (error) {
      console.error(`Error posting exercises`, error)
         document.getElementById('workout-result').innerHTML =`<li style="color: red">Failed to post exercises</li>`
 }
+})
+
+
 
 document.getElementById('generator-form').addEventListener('submit', async(e)=> {
     e.preventDefault()
