@@ -7,21 +7,23 @@
     <meta charset="UTF-8">
     <!-- the character set attribute tells the browser to convert code into human readable characters like emojis -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="styles.css">
     <!-- perhaps the most important meta tag and attribute allows the page to be adjusted to the viewport of the device-->
     <title> Exercitium</title>
     <!-- tag for displaying the title of the page in the tab of the browser -->
 
 </head>
 <!-- closing head tag -->
-<body>
+<body class="container">
     <!-- opening body tag -->
     <h1 id="search">
         <!-- Header 1 provides information on what the page is about -->
         Find Exercises
     </h1>
     <nav>
-        <a href="generator.html" target="_blank" >Random Workout Generator</a>
+    <a href="generator.html" target="_blank" >Random Workout Generator </a><a href="workouts.html">Saved Workouts</a>
     </nav>
+   
     <form action="" id="filterForm">
         <!-- opening form tag with an id of filterform -->
         <!-- Skill Level -->
@@ -56,7 +58,7 @@
       <!-- caption for the fieldset tag/ box -->
       <label><input type="checkbox" name="primaryMuscles" value="Abdominals" /> Abdominals</label>
       <!-- the label tag is used to caption the input tag, the type attribute determines how the input looks and behaves the name tag is used to label the data sent to the server and this determines how thwe data is groupes the value tag is the invible id for data that is sent to the server which in this caseis beginner -->
-      <label><input type="checkbox" name="primaryMuscles" value="Abductors" /> Abductors</label>
+      <label><input type="checkbox" name="primaryMuscles" value="Adductors" /> Adductors</label>
       <label><input type="checkbox" name="primaryMuscles" value="Biceps" /> Biceps</label>
       <label><input type="checkbox" name="primaryMuscles" value="Calves" /> Calves</label>
       <label><input type="checkbox" name="primaryMuscles" value="Chest" /> Chest</label>

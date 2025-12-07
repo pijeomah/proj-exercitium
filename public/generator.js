@@ -34,13 +34,19 @@ document.getElementById('generator-form').addEventListener('submit', async(e)=> 
 
     const workoutType = formData.get('workoutType')
     const exerciseCount = formData.get('exerciseCount')
+    const selectedMuscles = formData.getAll('primaryMuscles')
     // console.log(workoutType)
     // console.log(exerciseCount)
+    console.log(selectedMuscles)
     const params = new URLSearchParams()
-    formData.forEach((value, key) =>{
-        params.append(key, value)
-        
-    })
+    params.append('workoutType', workoutType)
+    params.append('exerciseCount', exerciseCount)
+
+    if(selectedMuscles.length > 0){
+        params.append('primaryMuscles', selectedMuscles.join(','))
+    }
+    console.log(`Request URL Params: `, params.toString())
+
     try {
         const res = await fetch('/exercises/random?' + params.toString())
 

@@ -3,14 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="styles.css">
     <title>Random Workout Generator</title>
 </head>
-<body>
+<body class="container">
     <h1>Random Workout Generator</h1>
-    <nav><a href="index.html">Find Exercises</a></nav>
+    <nav><a href="index.html">Find Exercises  </a>
+     <a href="workouts.html">Saved Workouts</a>
+    </nav>
+    
     <form action="" id="generator-form">
         <label for="equipment"><input type="radio" id="equipment" name="workoutType" value="equipment">Equipment</label>
         <label for="bodyweight"><input type="radio" id="bodyweight" name="workoutType" value="bodyweight">Bodyweight</label>
+        <fieldset>
+            <legend>
+                Target Muscles
+            </legend>
+            <label><input type="checkbox" name="primaryMuscles" value="Abdominals" /> Abdominals</label>
+    <label><input type="checkbox" name="primaryMuscles" value="Adductors" /> Adductors</label>
+    <label><input type="checkbox" name="primaryMuscles" value="Biceps" /> Biceps</label>
+    <label><input type="checkbox" name="primaryMuscles" value="Calves" /> Calves</label>
+    <label><input type="checkbox" name="primaryMuscles" value="Chest" /> Chest</label>
+    <label><input type="checkbox" name="primaryMuscles" value="Forearms" /> Forearms</label>
+    <label><input type="checkbox" name="primaryMuscles" value="Glutes" /> Glutes</label>
+    <label><input type="checkbox" name="primaryMuscles" value="Hamstrings" /> Hamstrings</label>
+    <label><input type="checkbox" name="primaryMuscles" value="Lats" /> Lats</label>
+    <label><input type="checkbox" name="primaryMuscles" value="Lower back" /> Lower Back</label>
+    <label><input type="checkbox" name="primaryMuscles" value="Middle back" /> Middle Back</label>
+    <label><input type="checkbox" name="primaryMuscles" value="Neck" /> Neck</label>
+    <label><input type="checkbox" name="primaryMuscles" value="Quadriceps" /> Quadriceps</label>
+    <label><input type="checkbox" name="primaryMuscles" value="Shoulders" /> Shoulders</label>
+    <label><input type="checkbox" name="primaryMuscles" value="Traps" /> Traps</label>
+    <label><input type="checkbox" name="primaryMuscles" value="Triceps" /> Triceps</label>
+        </fieldset>
         <label for="exercise_num">Number of workouts:
             <input type="number" name="exerciseCount" id="exercise_num" min="3" max="8" value="8">
         </label>

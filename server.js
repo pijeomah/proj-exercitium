@@ -134,6 +134,37 @@ if(error){
 
  })
 
+ app.get('/workout_plan', async(req,res) =>{
+    let query = await supabase
+                    .from('workout_plan')
+                    .select('*')
+                    .order('created_at', {ascending: false})
+
+
+        const { data, error } = await query
+        if(error ){
+             console.error('Supabase error:', error)
+        return res.status(500).json({error: error.message})
+        }
+        res.json(data)
+ })
+ 
+ app.delete('/workout_plan/:id', async(req, res)=> {
+    const { id } = req.params
+    const { data, error } = await supabase
+                        .from('workout_plan')
+                        .delete()
+                        .eq('id', id)
+                        .select()
+     if(error){
+        console.error('Supabase error:', error)
+        return res.status(500).json({error: error.message})
+    }
+    
+    res.json(data)
+
+ })
+ 
 app.get('/exercises/:id', async(req, res) =>{
 
     const { id } = req.params
